@@ -277,10 +277,11 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  min-width: 128px;
-  height: 56px;
-  padding: 10px 17px 10px 11px;
+  gap: 0;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  overflow: hidden;
   color: #2b1b00;
   font-weight: 900;
   font-size: 15px;
@@ -290,19 +291,46 @@ body {
   background: #fee500;
   border: 1px solid rgba(58, 29, 29, 0.12);
   box-shadow: 0 12px 28px rgba(61, 24, 24, 0.24);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition: width 0.22s ease, padding 0.22s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .floating-kakao:hover,
 .floating-kakao:focus-visible {
+  width: 142px;
+  padding: 0 18px 0 11px;
+  gap: 9px;
   transform: translateY(-4px);
   box-shadow: 0 18px 38px rgba(61, 24, 24, 0.30);
 }
 
 .floating-kakao-icon {
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.28);
+  display: grid;
+  place-items: center;
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  background: transparent;
+}
+
+.floating-kakao-icon img {
+  width: 34px;
+  height: 34px;
+}
+
+.floating-kakao > span:last-child {
+  display: block;
+  width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  transform: translateX(-6px);
+  transition: width 0.22s ease, opacity 0.18s ease, transform 0.22s ease;
+}
+
+.floating-kakao:hover > span:last-child,
+.floating-kakao:focus-visible > span:last-child {
+  width: 64px;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @media (max-width: 680px) {
@@ -329,14 +357,27 @@ body {
   .floating-kakao {
     right: 12px;
     bottom: 12px;
-    min-width: 112px;
-    height: 50px;
-    padding: 8px 13px 8px 9px;
+    width: 52px;
+    height: 52px;
+    padding: 0;
     font-size: 13px;
   }
 
+  .floating-kakao:hover,
+  .floating-kakao:focus-visible {
+    width: 126px;
+    padding: 0 14px 0 8px;
+    gap: 8px;
+  }
+
   .floating-kakao-icon {
-    width: 32px;
-    height: 32px;
+    flex-basis: 52px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .floating-kakao-icon img {
+    width: 30px;
+    height: 30px;
   }
 }
